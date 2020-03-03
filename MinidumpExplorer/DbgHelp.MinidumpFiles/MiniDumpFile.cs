@@ -213,6 +213,37 @@ namespace DbgHelp.MinidumpFiles
             return returnList.ToArray();
         }
 
+
+        public MiniDumpFunctionTableDescriptor[] ReadFunctionTableList()
+        {
+            MINIDUMP_FUNCTION_TABLE_STREAM functionTables;
+            IntPtr streamPointer;
+            uint streamSize;
+
+            if (!this.ReadStream<MINIDUMP_FUNCTION_TABLE_STREAM>(MINIDUMP_STREAM_TYPE.FunctionTableStream, out functionTables, out streamPointer, out streamSize))
+            {
+                return new MiniDumpFunctionTableDescriptor[0];
+            }
+
+            // Advance the stream pointer past the header
+            streamPointer = streamPointer + (int)functionTables.SizeOfHeader;
+
+            List<MiniDumpFunctionTableDescriptor> returnList;
+
+            // Now read the descriptors
+            if (functionTables.SizeOfDescriptor == Marshal.SizeOf(typeof(MINIDUMP_FUNCTION_TABLE_DESCRIPTOR)))
+            {
+                MINIDUMP_FUNCTION_TABLE_DESCRIPTOR[] descriptors = ReadArray<MINIDUMP_FUNCTION_TABLE_DESCRIPTOR>(streamPointer, (int)functionTables.NumberOfDescriptors);
+
+                returnList = new List<MiniDumpFunctionTableDescriptor>(descriptors.Select(x => new MiniDumpFunctionTableDescriptor(x)));
+            }
+            else
+                throw new Exception("Unexpected 'SizeOfDescriptor' when reading FunctionTableStream. The unexpected value was: '" + functionTables.SizeOfDescriptor + "'");
+
+            return returnList.ToArray();
+        }
+
+
         /// <summary>
         /// Reads the MINIDUMP_STREAM_TYPE.SystemInfoStream stream.
         /// </summary>

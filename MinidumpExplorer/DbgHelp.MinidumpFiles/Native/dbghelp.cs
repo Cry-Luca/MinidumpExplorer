@@ -168,6 +168,45 @@ namespace DbgHelp.MinidumpFiles.Native
         public UInt32 Reserved;
     }
 
+    /*
+        typedef struct _MINIDUMP_FUNCTION_TABLE_STREAM {
+            ULONG32 SizeOfHeader;
+            ULONG32 SizeOfDescriptor;
+            ULONG32 SizeOfNativeDescriptor;
+            ULONG32 SizeOfFunctionEntry;
+            ULONG32 NumberOfDescriptors;
+            ULONG32 SizeOfAlignPad;
+        } MINIDUMP_FUNCTION_TABLE_STREAM,
+    */
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
+    internal struct MINIDUMP_FUNCTION_TABLE_STREAM
+    {
+        public UInt32 SizeOfHeader;
+        public UInt32 SizeOfDescriptor;
+        public UInt32 SizeOfNativeDescriptor;
+        public UInt32 SizeOfFunctionEntry;
+        public UInt32 NumberOfDescriptors;
+        public UInt32 SizeOfAlignPad;
+    }
+
+    /*
+        typedef struct _MINIDUMP_FUNCTION_TABLE_DESCRIPTOR {
+            ULONG64 MinimumAddress;
+            ULONG64 MaximumAddress;
+            ULONG64 BaseAddress;
+            ULONG32 EntryCount;
+            ULONG32 SizeOfAlignPad;
+        } MINIDUMP_FUNCTION_TABLE_DESCRIPTOR,
+     */
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
+    internal struct MINIDUMP_FUNCTION_TABLE_DESCRIPTOR
+    {
+        public UInt64 MinimumAddress;
+        public UInt64 MaximumAddress;
+        public UInt64 BaseAddress;
+        public UInt32 EntryCount;
+        public UInt32 SizeOfAlignPad;
+    }
 
     /*
         typedef struct _MINIDUMP_HANDLE_DESCRIPTOR {  

@@ -94,6 +94,7 @@
     <Compile Include="MiniDumpCommentStreamA.cs" />
     <Compile Include="MiniDumpCommentStreamW.cs" />
     <Compile Include="MiniDumpDirectory.cs" />
+    <Compile Include="MiniDumpFunctionTableDescriptor.cs" />
     <Compile Include="MiniDumpMemoryInfo.cs" />
     <Compile Include="MiniDumpException.cs" />
     <Compile Include="MiniDumpMemoryInfoStream.cs" />

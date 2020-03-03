@@ -194,6 +194,12 @@ namespace MinidumpExplorer
                     numberOfItems = handleData.Length;
                     viewToDisplay = new HandleDataView(handleData);
                     break;
+                case "FunctionTables":
+                    nodeText = "FunctionTables";
+                    MiniDumpFunctionTableDescriptor[] functionTables = this._miniDumpFile.ReadFunctionTableList();
+                    numberOfItems = functionTables.Length;
+                    viewToDisplay = new FunctionTableListView(functionTables);
+                    break;
                 case "Modules":
                     nodeText = "Modules";
                     MiniDumpModule[] moduleData = this._miniDumpFile.ReadModuleList();
