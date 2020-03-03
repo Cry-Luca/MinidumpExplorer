@@ -286,6 +286,12 @@ namespace MinidumpExplorer
                     numberOfItems = string.IsNullOrEmpty(commentAStream.Comment) ? 0 : 1;
                     viewToDisplay = new CommentStreamAView(commentAStream);
                     break;
+                case "ProcessVmCounters":
+                    nodeText = "ProcessVmCounters";
+                    MiniDumpProcessVmCountersStream vmCounters = this._miniDumpFile.ReadProcessVmCountersStream();
+                    numberOfItems = 1;
+                    viewToDisplay = new ProcessVmCountersView(vmCounters);
+                    break;
             }
 
             if (viewToDisplay != null)

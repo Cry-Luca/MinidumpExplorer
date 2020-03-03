@@ -109,6 +109,7 @@
     <Compile Include="MiniDumpMiscInfo.cs" />
     <Compile Include="MiniDumpModule.cs" />
     <Compile Include="MiniDumpExceptionStream.cs" />
+    <Compile Include="MiniDumpProcessVmCountersStream.cs" />
     <Compile Include="MiniDumpStreamType.cs" />
     <Compile Include="MiniDumpSystemBasicInformation.cs" />
     <Compile Include="MiniDumpSystemBasicPerformanceInformation.cs" />

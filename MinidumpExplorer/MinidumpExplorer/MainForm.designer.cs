@@ -48,7 +48,8 @@
             System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("ThreadInfo", 1, 1);
             System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("ThreadNames", 1, 1);
             System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("UnloadedModules", 2, 2);
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("<No minidump loaded>", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("ProcessVmCounters");
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("<No minidump loaded>", new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
             treeNode3,
@@ -64,7 +65,8 @@
             treeNode13,
             treeNode14,
             treeNode15,
-            treeNode16});
+            treeNode16,
+            treeNode17});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
@@ -190,12 +192,15 @@
             treeNode16.SelectedImageIndex = 2;
             treeNode16.Tag = "UnloadedModules";
             treeNode16.Text = "UnloadedModules";
-            treeNode17.ImageIndex = 0;
             treeNode17.Name = "Node0";
-            treeNode17.Tag = "Summary";
-            treeNode17.Text = "<No minidump loaded>";
+            treeNode17.Tag = "ProcessVmCounters";
+            treeNode17.Text = "ProcessVmCounters";
+            treeNode18.ImageIndex = 0;
+            treeNode18.Name = "Node0";
+            treeNode18.Tag = "Summary";
+            treeNode18.Text = "<No minidump loaded>";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode17});
+            treeNode18});
             this.treeView1.SelectedImageIndex = 0;
             this.treeView1.ShowNodeToolTips = true;
             this.treeView1.Size = new System.Drawing.Size(238, 705);

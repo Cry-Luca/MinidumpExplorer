@@ -489,6 +489,36 @@ namespace DbgHelp.MinidumpFiles
             return new MiniDumpCommentStreamW(comment);
         }
 
+        /// <summary>
+        /// Reads the MINIDUMP_STREAM_TYPE.ProcessVmCountersStream stream.
+        /// </summary>
+        public MiniDumpProcessVmCountersStream ReadProcessVmCountersStream()
+        {
+            MINIDUMP_PROCESS_VM_COUNTERS_1 vmCounters1;
+            IntPtr streamPointer;
+            uint streamSize;
+
+            if (!this.ReadStream<MINIDUMP_PROCESS_VM_COUNTERS_1>(MINIDUMP_STREAM_TYPE.ProcessVmCountersStream, out vmCounters1, out streamPointer, out streamSize))
+            {
+                return new MiniDumpProcessVmCountersStream();
+            }
+
+            if(vmCounters1.Revision == 1)
+            {
+                return new MiniDumpProcessVmCountersStream(vmCounters1);
+            }
+            else
+            {
+                MINIDUMP_PROCESS_VM_COUNTERS_2 vmCounters2;
+                if (!this.ReadStream<MINIDUMP_PROCESS_VM_COUNTERS_2>(MINIDUMP_STREAM_TYPE.ProcessVmCountersStream, out vmCounters2, out streamPointer, out streamSize))
+                {
+                    return new MiniDumpProcessVmCountersStream();
+                }
+
+                return new MiniDumpProcessVmCountersStream(vmCounters2);
+            }
+        }
+
         public unsafe void CopyMemoryFromOffset(ulong rva, IntPtr destination, uint size)
         {
             try

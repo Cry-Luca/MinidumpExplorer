@@ -818,6 +818,98 @@ typedef struct _MINIDUMP_HANDLE_OPERATION_LIST {
     }
 
     /*
+    typedef struct _MINIDUMP_PROCESS_VM_COUNTERS_1 {
+        USHORT Revision;
+        ULONG PageFaultCount;
+        ULONG64 PeakWorkingSetSize;
+        ULONG64 WorkingSetSize;
+        ULONG64 QuotaPeakPagedPoolUsage;
+        ULONG64 QuotaPagedPoolUsage;
+        ULONG64 QuotaPeakNonPagedPoolUsage;
+        ULONG64 QuotaNonPagedPoolUsage;
+        ULONG64 PagefileUsage;
+        ULONG64 PeakPagefileUsage;
+        ULONG64 PrivateUsage;
+    } MINIDUMP_PROCESS_VM_COUNTERS_1,
+    */
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
+    internal struct MINIDUMP_PROCESS_VM_COUNTERS_1
+    {
+        public ushort Revision;
+        public UInt32 PageFaultCount;
+        public UInt64 PeakWorkingSetSize;
+        public UInt64 WorkingSetSize;
+        public UInt64 QuotaPeakPagedPoolUsage;
+        public UInt64 QuotaPagedPoolUsage;
+        public UInt64 QuotaPeakNonPagedPoolUsage;
+        public UInt64 QuotaNonPagedPoolUsage;
+        public UInt64 PagefileUsage;
+        public UInt64 PeakPagefileUsage;
+        public UInt64 PrivateUsage;
+    }
+
+    /*
+    #define MINIDUMP_PROCESS_VM_COUNTERS                0x0001
+    #define MINIDUMP_PROCESS_VM_COUNTERS_VIRTUALSIZE    0x0002
+    #define MINIDUMP_PROCESS_VM_COUNTERS_EX             0x0004
+    #define MINIDUMP_PROCESS_VM_COUNTERS_EX2            0x0008
+    #define MINIDUMP_PROCESS_VM_COUNTERS_JOB            0x0010
+    */
+
+    /*
+    typedef struct _MINIDUMP_PROCESS_VM_COUNTERS_2 {
+        USHORT Revision;
+        USHORT Flags;
+        ULONG PageFaultCount;
+        ULONG64 PeakWorkingSetSize;
+        ULONG64 WorkingSetSize;
+        ULONG64 QuotaPeakPagedPoolUsage;
+        ULONG64 QuotaPagedPoolUsage;
+        ULONG64 QuotaPeakNonPagedPoolUsage;
+        ULONG64 QuotaNonPagedPoolUsage;
+        ULONG64 PagefileUsage;
+        ULONG64 PeakPagefileUsage;
+        ULONG64 PeakVirtualSize;            // VIRTUALSIZE
+        ULONG64 VirtualSize;                // VIRTUALSIZE
+        ULONG64 PrivateUsage;               // EX+
+        ULONG64 PrivateWorkingSetSize;      // EX2+
+        ULONG64 SharedCommitUsage;          // EX2+
+
+        ULONG64 JobSharedCommitUsage;       // JOB+
+        ULONG64 JobPrivateCommitUsage;      // JOB+
+        ULONG64 JobPeakPrivateCommitUsage;  // JOB+
+        ULONG64 JobPrivateCommitLimit;      // JOB+
+        ULONG64 JobTotalCommitLimit;        // JOB+
+     } MINIDUMP_PROCESS_VM_COUNTERS_2,
+     */
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
+    internal struct MINIDUMP_PROCESS_VM_COUNTERS_2
+    {
+        public ushort Revision;
+        public ushort Flags;
+        public UInt32 PageFaultCount;
+        public UInt64 PeakWorkingSetSize;
+        public UInt64 WorkingSetSize;
+        public UInt64 QuotaPeakPagedPoolUsage;
+        public UInt64 QuotaPagedPoolUsage;
+        public UInt64 QuotaPeakNonPagedPoolUsage;
+        public UInt64 QuotaNonPagedPoolUsage;
+        public UInt64 PagefileUsage;
+        public UInt64 PeakPagefileUsage;
+        public UInt64 PeakVirtualSize;            // VIRTUALSIZE
+        public UInt64 VirtualSize;                // VIRTUALSIZE
+        public UInt64 PrivateUsage;               // EX+
+        public UInt64 PrivateWorkingSetSize;      // EX2+
+        public UInt64 SharedCommitUsage;          // EX2+
+
+        public UInt64 JobSharedCommitUsage;       // JOB+
+        public UInt64 JobPrivateCommitUsage;      // JOB+
+        public UInt64 JobPeakPrivateCommitUsage;  // JOB+
+        public UInt64 JobPrivateCommitLimit;      // JOB+
+        public UInt64 JobTotalCommitLimit;        // JOB+
+    }
+
+    /*
     typedef struct _MINIDUMP_SYSTEM_BASIC_INFORMATION {
         ULONG TimerResolution;
         ULONG PageSize;

@@ -204,6 +204,12 @@
     <Compile Include="Views\SummaryView.Designer.cs">
       <DependentUpon>SummaryView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ProcessVmCountersView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ProcessVmCountersView.designer.cs">
+      <DependentUpon>ProcessVmCountersView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\SystemMemoryInfoView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -322,6 +328,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SummaryView.resx">
       <DependentUpon>SummaryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ProcessVmCountersView.resx">
+      <DependentUpon>ProcessVmCountersView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SystemMemoryInfoView.resx">
       <DependentUpon>SystemMemoryInfoView.cs</DependentUpon>
